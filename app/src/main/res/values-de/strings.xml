@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_maps">Karte</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="title_activity_choose_marker">Markertyp</string>
+
+    <string name="marker_default">Marker</string>
+    <string name="marker_animals">Tierwelt</string>
+    <string name="marker_photography">Fotolocation</string>
+    <string name="marker_evstation">Elektrotanke</string>
+    <string name="marker_gathering">Versammlungsort</string>
+    <string name="marker_romantic">Romantik</string>
+    <string name="marker_mail">Briefkasten</string>
+    <string name="marker_dogs">Hundeauslauf</string>
+    <string name="marker_cigarettes">Zigaretten</string>
+    <string name="marker_campfire">Lagerfeuer</string>
+    <string name="marker_wifi">Free WiFi</string>
+    <string name="marker_fishing">Angelplatz</string>
+    <string name="marker_recyclingbank">Altkleidersammlung</string>
+    <string name="marker_scrapglass">Altglascontainer</string>
+    <string name="marker_chewinggum">Kaugummis</string>
+    <string name="marker_candy">Süßigkeiten</string>
+    <string name="marker_drinks">Getränke</string>
+    <string name="marker_toilet">Toiletten</string>
+    <string name="marker_frog">Froschwanderung</string>
+</resources>

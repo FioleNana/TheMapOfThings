@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Settings</string>
+    <string name="marker_animals">Wildlife</string>
+    <string name="marker_campfire">Campfire</string>
+    <string name="marker_candy">Candies</string>
+    <string name="marker_chewinggum">Chewing Gum</string>
+    <string name="marker_cigarettes">Cigarettes</string>
+    <string name="marker_default">Marker</string>
+    <string name="marker_dogs">Dog Walking</string>
+    <string name="marker_drinks">Softdrinks</string>
+    <string name="marker_evstation">EV Station</string>
+    <string name="marker_fishing">Fishing Spot</string>
+    <string name="marker_frog">Toad Migration</string>
+    <string name="marker_gathering">Gathering Place</string>
+    <string name="marker_mail">Mailbox</string>
+    <string name="marker_photography">Photo Location</string>
+    <string name="marker_recyclingbank">Recycling Bank</string>
+    <string name="marker_romantic">Romantic</string>
+    <string name="marker_scrapglass">Scrap Glass Container</string>
+    <string name="marker_toilet">Toilets</string>
+    <string name="marker_wifi">Free WiFi</string>
+    <string name="title_activity_choose_marker">Marker Type</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

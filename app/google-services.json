@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_id": "map-of-things",
+    "project_number": "408938293315",
+    "name": "Map of Things"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408938293315:android:e49abab6b240abcf",
+        "client_id": "android:org.fiole.mapofthings",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "org.fiole.mapofthings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408938293315-v81in5f61k33d9gdv6vhm1a6bds1fgmi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.fiole.mapofthings",
+            "certificate_hash": "5B15DC3135FE80C85AFC32996AC6DB5F323AE1CB"
+          }
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-71057654-1"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

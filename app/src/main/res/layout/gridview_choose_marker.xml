@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+    <ImageView
+        android:id="@+id/choose_marker_grid_image"
+        android:layout_marginBottom = "10dp"
+        android:src="@drawable/ic_marker_default"
+        android:layout_width="@dimen/grid_size"
+        android:layout_height="@dimen/grid_size"
+        android:maxWidth="@dimen/grid_size"
+        android:maxHeight="@dimen/grid_size"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/choose_marker_grid_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Markername"
+        android:layout_gravity="center_horizontal"
+        android:visibility="visible"
+        android:textSize="10sp" />
+
+</LinearLayout>

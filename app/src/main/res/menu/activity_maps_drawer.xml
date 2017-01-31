@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_setting"
+            android:title="Einstellungen" />
+        <item
+            android:id="@+id/nav_favourites"
+            android:icon="@drawable/ic_favourite"
+            android:title="Favoriten" />
+        <item
+            android:id="@+id/nav_infos"
+            android:icon="@drawable/ic_info"
+            android:title="Infos" />
+    </group>
+
+    <item android:title="Sozial">
+        <menu>
+            <item
+                android:id="@+id/nav_friends"
+                android:icon="@drawable/ic_group"
+                android:title="Freunde" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share"
+                android:title="Teilen" />
+        </menu>
+    </item>
+
+</menu>
