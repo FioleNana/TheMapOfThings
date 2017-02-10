@@ -5,10 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
@@ -16,14 +13,9 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -31,26 +23,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
+import com.google.android.gms.maps.*;
+import com.google.android.gms.maps.model.*;
 import org.fiole.mapofthings.enums.MarkerType;
 import org.fiole.mapofthings.models.UserModel;
 import org.fiole.mapofthings.utils.ImageUtils;
-
-import java.io.IOException;
-import java.net.URL;
 
 public class MapsActivity
         extends
@@ -264,25 +244,46 @@ public class MapsActivity
         if (requestCode == REQUEST_CODE_CHOOSE_MARKER) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
-                Integer markerId = data.getIntExtra("markerId", 0);
-
-                Drawable d = getDrawable(MarkerType.getPictureIdFromMarkerId(markerId));
-                Canvas canvas = new Canvas();
-                int markerSize = d.getIntrinsicWidth() / 4;
-                Bitmap bitmap = Bitmap.createBitmap(markerSize, markerSize, Bitmap.Config.ARGB_8888);
-                canvas.setBitmap(bitmap);
-                d.setBounds(0, 0, markerSize, markerSize);
-                d.draw(canvas);
-                BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
-
-                map.addMarker(new MarkerOptions()
-                        .position(lastLatLng)
-                        .title(getString(MarkerType.getNameIdFromMarkerId(markerId)))
-                        .icon(icon)
-                        .draggable(false)
-                        .visible(true));
+                createMarker(data.getIntExtra("markerId", 0));
             }
         }
+    }
+
+    private void createMarker(Integer markerId) {
+        // Get Drawable of Markertype and set Size
+        MarkerType marker = MarkerType.getMarkerFromMarkerId(markerId);
+        int markerColorRed = marker.getColor()[0];
+        int markerColorGreen = marker.getColor()[1];
+        int markerColorBlue = marker.getColor()[2];
+        Drawable iconAsDrawable = getDrawable(marker.getPictureId());
+        int markerSize = iconAsDrawable.getIntrinsicWidth() / 4;
+        iconAsDrawable.setBounds(10, 10, markerSize, markerSize);
+        iconAsDrawable.setTint(Color.rgb(markerColorRed, markerColorGreen, markerColorBlue));
+
+        // Create a Bitmap of Drawable
+        Bitmap bitmap = Bitmap.createBitmap(markerSize + 10, markerSize + 10, Bitmap.Config.ARGB_8888);
+
+        // Create a canvas and draw Bitmap
+        Canvas canvas = new Canvas();
+        canvas.setBitmap(bitmap);
+
+        Paint circlePaint = new Paint();
+        circlePaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+
+        circlePaint.setColor(Color.WHITE);
+        canvas.drawCircle(markerSize / 2 + 5,markerSize / 2 + 5,markerSize / 2 + 5, circlePaint);
+        iconAsDrawable.draw(canvas);
+
+        // Create BitmapDescriptor from Bitmap
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(bitmap);
+
+        // Add Marker to map
+        map.addMarker(new MarkerOptions()
+                .position(lastLatLng)
+                .title(getString(MarkerType.getNameIdFromMarkerId(markerId)))
+                .icon(icon)
+                .draggable(false)
+                .visible(true));
     }
 
     private void setEditMode(boolean editMode){

@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private static final int RC_SIGN_IN = 9001;
     private GoogleApiClient mGoogleApiClient;
     private SignInButton signInButton;
-    private Button logoutButton, continueButton;
     private TextView displayName, email;
     private ImageView userImage;
     private SharedPreferences userData;
@@ -62,9 +61,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         email = (TextView) findViewById(R.id.loginEmail);
         userImage = (ImageView) findViewById(R.id.loginUserImage);
 
-        logoutButton = (Button) findViewById(R.id.logoutButton);
+        Button logoutButton = (Button) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(this);
-        continueButton = (Button) findViewById(R.id.continueButton);
+
+        Button continueButton = (Button) findViewById(R.id.continueButton);
         continueButton.setOnClickListener(this);
 
         if(userData.getBoolean("loggedIn", false)){

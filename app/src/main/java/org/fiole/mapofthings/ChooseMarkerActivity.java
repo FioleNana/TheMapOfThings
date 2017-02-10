@@ -23,8 +23,6 @@ public class ChooseMarkerActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fillMarkers();
-
-
     }
 
     private void fillMarkers() {

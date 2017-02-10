@@ -1,6 +1,8 @@
 package org.fiole.mapofthings.adapters;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,8 +58,15 @@ public class MarkerGridImageAdapter extends BaseAdapter {
             view = convertView;
         }
 
+        MarkerType marker = markers.get(position);
+        Drawable markerIcon = activity.getDrawable(marker.getPictureId());
+        int markerColorRed = marker.getColor()[0];
+        int markerColorGreen = marker.getColor()[1];
+        int markerColorBlue = marker.getColor()[2];
+        markerIcon.setTint(Color.rgb(markerColorRed, markerColorGreen, markerColorBlue));
+
         ImageView imageView = (ImageView) view.findViewById(R.id.choose_marker_grid_image);
-        imageView.setImageResource(markers.get(position).getPictureId());
+        imageView.setImageDrawable(markerIcon);
         imageView.setMaxWidth((int) activity.getResources().getDimension(R.dimen.grid_size));
 
         TextView textView = (TextView) view.findViewById(R.id.choose_marker_grid_title);
