@@ -28,9 +28,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
+import org.fiole.mapofthings.adapters.MotInfoWindowAdapter;
 import org.fiole.mapofthings.enums.MarkerType;
+import org.fiole.mapofthings.models.MarkerInfos;
 import org.fiole.mapofthings.models.UserModel;
 import org.fiole.mapofthings.utils.ImageUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapsActivity
         extends
@@ -49,6 +54,7 @@ public class MapsActivity
     private FloatingActionButton fab;
     private LatLng lastLatLng;
     boolean editMode;
+    private Map<Marker, MarkerInfos> markerInfoMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,9 @@ public class MapsActivity
         // Map
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        // MarkerInfos
+        markerInfoMap = new HashMap<>();
     }
 
     private void makeMenu(Toolbar toolbar) {
@@ -189,6 +198,7 @@ public class MapsActivity
         map = googleMap;
         map.setMyLocationEnabled(true);
         map.setOnMapClickListener(this);
+        map.setInfoWindowAdapter(new MotInfoWindowAdapter(this));
 
         UiSettings ui = map.getUiSettings();
         ui.setCompassEnabled(true);
@@ -300,5 +310,9 @@ public class MapsActivity
     public boolean onMyLocationButtonClick() {
         zoomToUser(true);
         return true;
+    }
+
+    public Map<Marker, MarkerInfos> getMarkerInfoMap() {
+        return markerInfoMap;
     }
 }
